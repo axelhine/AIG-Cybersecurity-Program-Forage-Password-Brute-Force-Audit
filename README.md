@@ -4,11 +4,18 @@ A password security simulation completed as part of the **AIG Cybersecurity Job 
 
 ## About This Project
 
-This project simulates a real-world password security audit: attempting to brute-force a password-protected ZIP file using a common password dictionary (`rockyou.txt`), a widely used wordlist in security testing. The exercise demonstrates why weak or reused passwords are a serious organizational risk — a password found in a public breach dataset can often be cracked in seconds using automated tools like this one.
+This project simulates a real-world password security audit: attempting to brute-force a password-protected ZIP file using a common password dictionary ([`rockyou.txt`](rockyou.txt)), a wordlist widely used in security testing. The exercise demonstrates why weak or reused passwords are a serious organizational risk — a password found in a public breach dataset can often be cracked in seconds using automated tools like this one.
+
+## Files in This Repository
+
+- [`bruteforce.py`](bruteforce.py) — the brute-force script
+- [`enc.zip`](enc.zip) — the password-protected archive being cracked
+- [`rockyou.txt`](rockyou.txt) — the sample password wordlist used to guess the password
+- [`ImportantFile.docx`](ImportantFile.docx) — the file recovered once the correct password is found
 
 ## How It Works
 
-The script (`bruteforce.py`) opens a password-protected ZIP file and iterates through a list of candidate passwords, attempting extraction with each one until the correct password is found or the list is exhausted.
+The script ([`bruteforce.py`](bruteforce.py)) opens a password-protected ZIP file and iterates through a list of candidate passwords, attempting extraction with each one until the correct password is found or the list is exhausted.
 
 ```python
 def attempt_extract(zf_handle, password):
@@ -23,6 +30,18 @@ def attempt_extract(zf_handle, password):
 ## Why This Matters (Security Context)
 
 This simulation illustrates a core GRC/security principle in practice: **password policy is a control, and weak controls are exploitable.** An organization that permits weak, common, or reused passwords is vulnerable to exactly this kind of automated attack. This is why frameworks like PCI DSS and SOC 2 explicitly require strong password management policies as a baseline control.
+
+## How to Run
+
+1. Clone or download this repository
+2. Make sure Python 3 is installed
+3. From inside the project folder, run:
+
+​```
+python bruteforce.py
+​```
+
+4. The script will attempt each password in [`rockyou.txt`](rockyou.txt) against [`enc.zip`](enc.zip) and print the correct password once found, then extract [`ImportantFile.docx`](ImportantFile.docx)
 
 ## Skills Demonstrated
 
